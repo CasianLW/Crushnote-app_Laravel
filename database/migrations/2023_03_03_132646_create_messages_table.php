@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -12,9 +13,9 @@ return new class extends Migration
     public function up()
 {
     Schema::create('messages', function (Blueprint $table) {
-        $table->id();
+        $table->bigIncrements('id');
         $table->text('message');
-        $table->string('token');
+        $table->string('token')->default(Str::random(32))->unique();
         $table->timestamps();
     });
 }
@@ -25,5 +26,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('messages');
+
     }
 };
