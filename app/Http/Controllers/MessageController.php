@@ -12,14 +12,14 @@ class MessageController extends Controller
 {
     public function create()
 {
+
     return view('create');
-    // return view('create');
 }
 
 public function store(Request $request)
 {
     $validated = $request->validate([
-        'email' => 'required|email',
+        'email' => ['required','email','regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'],
         'message' => 'required|min:15',
     ]);
 
@@ -32,7 +32,7 @@ public function store(Request $request)
 
     Mail::to($validated['email'])->send(new MessageSent($message));
 
-    return redirect()->route('messages.create')->with('status', 'Your message has been sent!');
+    return redirect()->route('messages.create')->with('success', 'Message sent successfully!');
 }
 
 public function show(Request $request, $token)
