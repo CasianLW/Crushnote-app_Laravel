@@ -7,7 +7,8 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> -->
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
 </head>
 <body>
     <header>
@@ -19,7 +20,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/send') }}">Send crushnote</a>
+                            <a class="nav-link" href="{{ url('/') }}">Send crushnote</a>
                         </li>
                     </ul>
                 </div>
@@ -34,6 +35,6 @@
     </main>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 </body>
 </html>
