@@ -9,7 +9,7 @@
             <div class="card-body">
                 <p class="card-text">{{ $message->message }}</p>
                 <hr>
-                <p>Expires at: {{ $message->updated_at->addHours(1)->format('d/m/Y H:i:s') }}</p>
+                <p>The note was automatically deleted, make sure you read the message before leaving 😉 </p>
             </div>
         </div>
     </div>
