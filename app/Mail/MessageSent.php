@@ -21,7 +21,11 @@ class MessageSent extends Mailable
 
     public function build()
     {
-        return $this->subject('You have received a secret message')
-                    ->markdown('emails.message.sent');
+        $token = $this->message->token;
+        return $this->markdown('emails.message_sent')
+                    ->with([
+                        'url' => route('messages.show', ['token' => $token]),
+                        'token' => $token
+                    ]);
     }
 }
