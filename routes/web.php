@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Route::post('/sendmail', [MessageController::class, 'store'])->name('sendmail');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/sendmail', function () {
+//     return view('emails.message-form');
+// });
+
+
+Route::get('/', [App\Http\Controllers\MessageController::class, 'create'])->name('messages.create');
+Route::post('/', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
+Route::get('/message/{token}', [App\Http\Controllers\MessageController::class, 'show'])->name('messages.show');
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
