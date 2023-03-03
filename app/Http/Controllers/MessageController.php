@@ -7,6 +7,7 @@ use App\Mail\MessageSent;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MessageController extends Controller
 {
@@ -37,11 +38,16 @@ public function store(Request $request)
 
 public function show(Request $request, $token)
 {
+    try{
     $message = Message::where('token', $token)->firstOrFail();
 
  
     $message->delete();
 
     return view('show', ['message' => $message]);
+} catch (ModelNotFoundException $exception){
+    return redirect('/sorry');
+
+}
 }
 }

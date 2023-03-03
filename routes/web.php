@@ -25,6 +25,9 @@ Route::post('/', [App\Http\Controllers\MessageController::class, 'store'])->name
 Route::get('/message/{token}', [App\Http\Controllers\MessageController::class, 'show'])->name('messages.show');
 
 
+Route::get('/sorry', function () {
+    return view('sorry');
+});
 // Route::get('/', function () {
 //     return view('welcome');
 // });
